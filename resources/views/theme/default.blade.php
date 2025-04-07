@@ -38,5 +38,26 @@
         <script src="{{ asset('theme/assets/demo/chart-bar-demo.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('theme/js/datatables-simple-demo.js') }}"></script>
+          <!-- Place script AFTER the dropdown and input -->
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const typeSelect = document.getElementById('type');
+              const couponField = document.getElementById('couponField');
+
+              function toggleField() {
+                if (typeSelect.value === 'coupon') {
+                  couponField.classList.remove('hidden');
+                } else {
+                  couponField.classList.add('hidden');
+                }
+              }
+
+              // Initial call
+              toggleField();
+
+              // Event listener
+              typeSelect.addEventListener('change', toggleField);
+            });
+          </script>
     </body>
 </html>

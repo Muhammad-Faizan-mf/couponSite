@@ -65,6 +65,8 @@ class BrandController extends Controller
      */
     public function show(Brand $brand): View
     {
+        $brand->load('category');
+
         return view('brand.show', compact('brand'));
     }
 

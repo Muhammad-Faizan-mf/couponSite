@@ -22,6 +22,30 @@
                 {{ $brand->detail }}
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Category:</strong> <br/>
+                {{ $brand->category->name }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Slug:</strong> <br/>
+                {{ $brand->slug }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Store url:</strong> <br/>
+                {{ $brand->store_url }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Affiliate url:</strong> <br/>
+                {{ $brand->affiliate_url }}
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Image:</strong><br/>

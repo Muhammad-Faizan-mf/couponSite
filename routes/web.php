@@ -5,8 +5,11 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Artisan;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +36,7 @@ Route::get('users', [UserController::class, 'users']);
 Route::resource('category', CategoryController::class)->middleware('auth');
 Route::resource('blogs', BlogController::class)->middleware('auth');
 Route::resource('brands', BrandController::class)->middleware('auth');
+Route::resource('coupons', CouponController::class)->middleware('auth');
 
 
 Route::get('/db-test', function () {
@@ -42,4 +46,13 @@ Route::get('/db-test', function () {
     } catch (\Exception $e) {
         return "DB connection error: " . $e->getMessage();
     }
+});
+
+
+Route::get('/run-composer-update', function () {
+    $output = shell_exec('composer update 2>&1');
+    return "<pre>$output</pre>";
+});
+Route::get('/test', function () {
+    return view('test');
 });

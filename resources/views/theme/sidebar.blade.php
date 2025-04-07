@@ -20,7 +20,7 @@
                     <div class="category-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Brands
                 </a>
-                <a class="nav-link" href="/categories">
+                <a class="nav-link" href="/coupons  ">
                     <div class="category-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Coupons
                 </a>
