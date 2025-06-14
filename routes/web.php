@@ -47,6 +47,14 @@ Route::resource('faqs', FaqController::class)->middleware('auth');
 
 
 
+// For site routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
+Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
+Route::get('/categories',[NavbarController::class,'categories']);
+Route::get('/store',[StoreController::class,'index']);
+
+
 // Route::get('/db-test', function () {
 //     try {
 //         \DB::connection()->getPdo();
@@ -67,12 +75,7 @@ Route::get('/test', function () {
 
 
 
-// For site routes
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
-Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
-Route::get('/categories',[NavbarController::class,'categories']);
-Route::get('/store',[StoreController::class,'index']);
+
 
 
 // Route::get('/store', function () {
