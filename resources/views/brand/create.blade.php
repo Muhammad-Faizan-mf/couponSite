@@ -90,7 +90,18 @@
                 <div class="form-text text-danger">{{ $message }}</div>
             @enderror
         </div>
-
+        {{-- <div class="mb-3">
+            <label for="inputfaq" class="form-label"><strong>Faq:</strong></label>
+            <input
+                type="text"
+                name="faq"
+                class="form-control @error('faq') is-invalid @enderror"
+                id="inputfaq"
+                placeholder="faq">
+            @error('faq')
+                <div class="form-text text-danger">{{ $message }}</div>
+            @enderror
+        </div> --}}
 
         <div class="mb-3">
             <label for="inputImage" class="form-label"><strong>Image:</strong></label>

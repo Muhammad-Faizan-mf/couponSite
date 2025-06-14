@@ -9,6 +9,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\site\NavbarController;
+use App\Http\Controllers\site\StoreController;
 use App\Http\Controllers\UserController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Artisan;
@@ -71,7 +72,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
 Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
 Route::get('/categories',[NavbarController::class,'categories']);
+Route::get('/store',[StoreController::class,'index']);
 
-// Route::get('/brands', function () {
-//     return view('brands');
+
+// Route::get('/store', function () {
+//     return view('site.store');
 // });

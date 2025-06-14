@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
@@ -9,7 +9,7 @@ use App\Models\Category;
 use App\Models\Coupon;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class StoreController extends Controller
 {
     public function index(){
 
@@ -24,6 +24,6 @@ class HomeController extends Controller
 
 
 
-        return view('site.home',compact('topBrands','recentBlogs','topCoupons','categories'));
+        return view('site.store',compact('topBrands','recentBlogs','topCoupons','categories'));
     }
 }
