@@ -6,14 +6,19 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\site\NavbarController;
 use App\Http\Controllers\UserController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Artisan;
 
+///CRM Routes
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 
@@ -37,6 +42,8 @@ Route::resource('category', CategoryController::class)->middleware('auth');
 Route::resource('blogs', BlogController::class)->middleware('auth');
 Route::resource('brands', BrandController::class)->middleware('auth');
 Route::resource('coupons', CouponController::class)->middleware('auth');
+Route::resource('faqs', FaqController::class)->middleware('auth');
+
 
 
 Route::get('/db-test', function () {
@@ -56,3 +63,15 @@ Route::get('/run-composer-update', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+
+
+// For site routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
+Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
+Route::get('/categories',[NavbarController::class,'categories']);
+
+// Route::get('/brands', function () {
+//     return view('brands');
+// });

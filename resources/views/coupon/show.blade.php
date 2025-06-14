@@ -22,12 +22,75 @@
                 {{ $coupon->detail }}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Details:</strong> <br/>
+                {{ $coupon->url }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Url:</strong> <br/>
+                {{ $coupon->detail }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Type:</strong> <br/>
+                {{ $coupon->type }}
+            </div>
+        </div>
+        @if ($coupon->coupon_code)
+
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Coupon Code:</strong> <br/>
+                {{ $coupon->coupon_code }}
+            </div>
+        </div>
+        @endif
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>State:</strong> <br/>
+                {{ $coupon->state }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Priority:</strong> <br/>
+                {{ $coupon->priority }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Start Date:</strong> <br/>
+                {{ $coupon->startDate }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>End Date:</strong> <br/>
+                {{ $coupon->endDate }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Brand:</strong> <br/>
+                {{ $coupon->brand->name ?? 'No Brand' }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+            <div class="form-group">
+                <strong>Discount Percentage:</strong> <br/>
+                {{ $coupon->discount }}
+            </div>
+        </div>
+        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Image:</strong><br/>
                 <img src="/images/coupons/{{ $coupon->image }}" width="500px">
             </div>
-        </div>
+        </div> --}}
     </div>
 
   </div>

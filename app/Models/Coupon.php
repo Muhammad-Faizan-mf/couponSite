@@ -8,6 +8,12 @@ class Coupon extends Model
 {
     //
     protected $fillable = [
-        'name', 'detail', 'image'
+        'name', 'detail', 'url','type','coupon_code','state','priority','startDate','endDate','brand_id','discount'
     ];
+
+    public function brand()
+{
+    return $this->belongsTo(Brand::class);
+}
+
 }

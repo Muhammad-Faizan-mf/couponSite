@@ -80,7 +80,7 @@
         </div>
 
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="inputPriority" class="form-label"><strong>Priority:</strong></label>
             <select id="priority" name="priority" class="w-full p-2 border rounded">
                 <option value="No">No</option>
@@ -90,7 +90,7 @@
             @error('priority')
                 <div class="form-text text-danger">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
 
 
         <div class="mb-3">
@@ -133,6 +133,34 @@
                 <div class="form-text text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="priority" class="form-label"><strong>Priority:</strong></label>
+            <select name="priority" id="priority" class="form-control" style="width:350px">
+                <option value="">--- Select Priority ---</option>
+                @for ($i = 1; $i <= 20; $i++)
+                <option value="{{ $i }}">{{ $i }}</option>
+            @endfor
+            </select>
+
+            @error('priority')
+                <div class="form-text text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+
+        <div class="mb-3">
+            <label for="inputDiscount" class="form-label"><strong>Discount Percentage:</strong></label>
+            <input
+                type="number"
+                name="discount"
+                class="form-control @error('discount') is-invalid @enderror"
+                id="inputName"
+                placeholder="%">
+            @error('discount')
+                <div class="form-text text-danger">{{ $message }}</div>
+            @enderror
+        </div>
             {{-- <div class="max-w-md mx-auto">
                 <!-- Dropdown -->
                 <label for="type" class="block mb-1 text-sm font-medium text-gray-700">Select Type</label>
@@ -149,7 +177,7 @@
             </div> --}}
 
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="inputImage" class="form-label"><strong>Image:</strong></label>
             <input
                 type="file"
@@ -159,7 +187,7 @@
             @error('image')
                 <div class="form-text text-danger">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
     </form>

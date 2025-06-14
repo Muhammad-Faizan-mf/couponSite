@@ -14,4 +14,10 @@ class Category extends Model
         return $this->hasMany(Blog::class, 'category'); // 'category' is the foreign key in the blogs table
     }
 
+    public function brands()
+{
+    return $this->hasMany(Brand::class);
+}
+
+
 }

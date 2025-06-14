@@ -13,4 +13,10 @@ class Brand extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function coupons()
+{
+    return $this->hasMany(Coupon::class);
+}
+
+
 }

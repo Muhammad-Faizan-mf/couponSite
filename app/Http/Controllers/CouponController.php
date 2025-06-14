@@ -12,10 +12,10 @@ class CouponController extends Controller
 {
     public function index(): View
     {
-        $coupons = Coupon::latest()->paginate(5);
+        $coupons = Coupon::latest()->paginate(10);
 
         return view('coupon.index',compact('coupons'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+                    ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -35,17 +35,20 @@ class CouponController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'url' => 'required',
+            'type' => 'required',
+            'state' => 'required',
+            'priority' => 'required',
+            'startDate' => 'required',
+            // 'endDate' => 'required',
+            'brand_id' => 'required',
+            'discount' => 'required',
+
         ]);
 
         $input = $request->all();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/coupons';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
+
 
         Coupon::create($input);
 
@@ -66,7 +69,8 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon): View
     {
-        return view('coupon.edit', compact('coupon'));
+        $brands = Brand::get();
+        return view('coupon.edit', compact('coupon','brands'));
     }
 
     /**
@@ -76,19 +80,20 @@ class CouponController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
+            'url' => 'required',
+            'type' => 'required',
+            'state' => 'required',
+            'priority' => 'required',
+            'startDate' => 'required',
+            // 'endDate' => 'required',
+            'brand_id' => 'required',
+            'discount' => 'required',
         ]);
 
         $input = $request->all();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/coupons';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }else{
-            unset($input['image']);
-        }
+
 
         $coupon->update($input);
 

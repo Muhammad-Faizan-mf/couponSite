@@ -28,6 +28,10 @@
                     <div class="category-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Blogs
                 </a>
+                <a class="nav-link" href="/faqs">
+                    <div class="category-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Faqs
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
