@@ -47,14 +47,14 @@ Route::resource('faqs', FaqController::class)->middleware('auth');
 
 
 
-Route::get('/db-test', function () {
-    try {
-        \DB::connection()->getPdo();
-        return "Connected to DB: " . \DB::connection()->getDatabaseName();
-    } catch (\Exception $e) {
-        return "DB connection error: " . $e->getMessage();
-    }
-});
+// Route::get('/db-test', function () {
+//     try {
+//         \DB::connection()->getPdo();
+//         return "Connected to DB: " . \DB::connection()->getDatabaseName();
+//     } catch (\Exception $e) {
+//         return "DB connection error: " . $e->getMessage();
+//     }
+// });
 
 
 Route::get('/run-composer-update', function () {
