@@ -9,7 +9,7 @@ use App\Models\Category;
 use App\Models\Coupon;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class   StoreController extends Controller
 {
     public function index(){
 

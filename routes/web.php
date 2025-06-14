@@ -9,7 +9,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\site\NavbarController;
-use App\Http\Controllers\site\StoreController;
+use App\Http\Controllers\Site\StoreController;
 use App\Http\Controllers\UserController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Artisan;
