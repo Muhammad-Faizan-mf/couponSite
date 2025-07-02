@@ -10,7 +10,6 @@
     <title>@yield('title', 'Captain Discounts')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tailwind CDN (or use Laravel Mix/Vite if preferred) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -23,25 +22,20 @@
 </head>
 <body class="bg-white text-black font-sans">
 
-    <!-- Include Alpine.js if you're using plain HTML -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
-<!-- Add this inside your Blade layout HEAD or main CSS -->
 <style>
     [x-cloak] { display: none !important; }
   </style>
 
-  <!-- Navbar section -->
   <nav x-data="{ open: false }" class="w-full bg-black text-white px-4 md:px-12 py-4 flex justify-between items-center relative">
-    <!-- Logo -->
     <div class="text-white text-xl font-bold">
         <a href="/">
       <img src="logo.png" alt="Logo" class="h-8" />
     </a>
     </div>
 
-    <!-- Desktop menu -->
     <ul class="hidden md:flex space-x-6 text-sm">
       <li><a href="#" class="hover:text-green-400">How it Works</a></li>
       <li><a href="/store" class="hover:text-green-400">Promo Codes</a></li>
@@ -50,7 +44,6 @@
       <li><a href="#" class="hover:text-green-400">Blogs</a></li>
     </ul>
 
-    <!-- Desktop buttons -->
     <div class="hidden md:flex items-center space-x-4">
       <button aria-label="Search" class="text-white">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,7 +54,6 @@
       <a href="#" class="bg-green-500 text-black px-4 py-1 rounded-full text-sm">Get Coupons</a>
     </div>
 
-    <!-- Mobile hamburger -->
     <button @click="open = !open" class="md:hidden focus:outline-none" aria-label="Toggle menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path :class="{'hidden': open, 'inline-flex': !open }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -69,7 +61,6 @@
       </svg>
     </button>
 
-    <!-- Mobile menu -->
     <ul
       x-show="open"
       @click.away="open = false"
@@ -86,18 +77,15 @@
     </ul>
   </nav>
 
-  <!-- Add Alpine.js before closing body tag -->
   <script src="//unpkg.com/alpinejs" defer></script>
 
 
  @yield('content')
 
  <footer class="bg-black text-white text-sm">
-    {{-- Top Footer --}}
-    <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+     <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
         <div class="flex flex-col lg:flex-row justify-between gap-10 items-start lg:items-center">
-            {{-- Logo & Social --}}
-            <div class="flex flex-col items-center lg:items-start space-y-4 text-center lg:text-left">
+             <div class="flex flex-col items-center lg:items-start space-y-4 text-center lg:text-left">
                 <a href="/">
                 <img src="logo.png" alt="Captain Discounts Logo" class="h-10">
             </a>
@@ -109,10 +97,8 @@
                 </div>
             </div>
 
-            {{-- Footer Columns --}}
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 w-full text-center sm:text-left">
-                {{-- Company --}}
-                <div>
+             <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 w-full text-center sm:text-left">
+                 <div>
                     <h4 class="font-semibold mb-3">Company</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#">About Us</a></li>
@@ -121,8 +107,7 @@
                     </ul>
                 </div>
 
-                {{-- Resources --}}
-                <div>
+                 <div>
                     <h4 class="font-semibold mb-3">Resources</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#">Help Center</a></li>
@@ -131,7 +116,6 @@
                     </ul>
                 </div>
 
-                {{-- Legal --}}
                 <div>
                     <h4 class="font-semibold mb-3">Legal</h4>
                     <ul class="space-y-2 text-gray-400">
@@ -144,13 +128,11 @@
         </div>
     </div>
 
-    {{-- Middle Disclaimer --}}
-    <div class="bg-gray-800 text-center text-gray-300 px-6 py-5 text-xs">
+     <div class="bg-gray-800 text-center text-gray-300 px-6 py-5 text-xs">
         At CaptainDiscounts.com, we strive to bring you the best coupon codes, deals, reviews, and money-saving tips. When you use our links to make a purchase, we may earn a commission at no additional cost to you. This helps us maintain our free service for all users. We only promote products and services we genuinely believe will benefit our users, and we indicate when content includes affiliate links. Thank you for supporting CaptainDiscounts.com!
     </div>
 
-    {{-- Bottom Green Bar --}}
-    <div class="bg-lime-500 text-black text-xs py-4 px-6">
+     <div class="bg-lime-500 text-black text-xs py-4 px-6">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-center gap-2">
             <p class="font-semibold">© 2025 Captain Discount. All rights reserved.</p>
             <div class="flex space-x-4">
@@ -175,8 +157,7 @@
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
 
-            // Toggle icon between hamburger and close (X)
-            if (menu.classList.contains('hidden')) {
+             if (menu.classList.contains('hidden')) {
                 icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger
             } else {
                 icon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X mark
