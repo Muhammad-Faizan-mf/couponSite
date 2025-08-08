@@ -61,11 +61,13 @@
           <!-- Brand Logos -->
           @foreach ($topBrands as $topBrand)
             <div class="shrink-0 w-28 flex justify-center items-center">
+                <a href="/store/{{$topBrand->id}}">
               <img
                 src="{{ asset('images/brands/' . $topBrand->image) }}"
                 alt="{{ $topBrand->name ?? 'Brand Logo' }}"
                 class="h-10 object-contain max-w-full"
               >
+              </a>
             </div>
           @endforeach
         </div>
@@ -73,12 +75,15 @@
         <!-- Desktop Grid (11 Columns) -->
         <div class="hidden md:grid grid-cols-11 gap-6">
           @foreach ($topBrands as $topBrand)
-            <div class="flex justify-center items-center">
+
+          <div class="flex justify-center items-center">
+            <a href="/store/{{$topBrand->id}}">
               <img
                 src="{{ asset('images/brands/' . $topBrand->image) }}"
                 alt="{{ $topBrand->name ?? 'Brand Logo' }}"
                 class="h-10 object-contain max-w-full"
               >
+              </a>
             </div>
           @endforeach
         </div>

@@ -32,7 +32,7 @@
   <nav x-data="{ open: false }" class="w-full bg-black text-white px-4 md:px-12 py-4 flex justify-between items-center relative">
     <div class="text-white text-xl font-bold">
         <a href="/">
-      <img src="logo.png" alt="Logo" class="h-8" />
+      <img src="/logo.png" alt="Logo" class="h-8" />
     </a>
     </div>
 

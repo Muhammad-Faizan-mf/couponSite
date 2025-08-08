@@ -26,4 +26,18 @@ class   StoreController extends Controller
 
         return view('site.store',compact('topBrands','recentBlogs','topCoupons','categories'));
     }
+
+    public function storeView($id){
+        $store = Brand::where('id',$id)
+        ->first();
+         $topBrands = Brand::withCount('coupons')
+        ->orderBy('coupons_count', 'desc')
+        ->take(11)
+        ->get();
+        $coupons = Coupon::where('brand_id', $id)->get();
+        // dd($coupons);
+
+        // dd($store,$topBrands);
+        return view('site.store',compact('store','topBrands','coupons'));
+    }
 }

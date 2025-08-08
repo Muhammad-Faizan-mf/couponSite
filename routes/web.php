@@ -6,6 +6,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\DealController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\site\NavbarController;
@@ -53,7 +54,10 @@ Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
 Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
 Route::get('/categories',[NavbarController::class,'categories']);
 Route::get('/store',[StoreController::class,'index']);
+Route::get('/store/{id}',[StoreController::class,'storeView']);
 
+
+// Route::get('/deals', [DealController::class, 'index'])->name('deals.index');
 
 // Route::get('/db-test', function () {
 //     try {
