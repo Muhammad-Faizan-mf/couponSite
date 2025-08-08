@@ -38,7 +38,7 @@
         <h2 class="text-2xl font-bold text-black">
           Promo Codes And Deals - They Really Work!
         </h2>
-        <a href="#" class="text-green-600 text-sm font-medium hover:underline">
+        <a href="/all-stores" class="text-green-600 text-sm font-medium hover:underline">
           View All Stores
         </a>
       </div>
