@@ -8,7 +8,7 @@
             <aside class="lg:w-1/4 w-full space-y-6 bg-[#f7fdf7] p-6 rounded-xl shadow-sm">
                 <div class="text-center">
                     {{-- <img src="{{ asset('images/brands/{{$store->image}}') }}" alt="Amazon" class="mx-auto h-16 object-contain"> --}}
-                    <img src="{{ asset('images/brands/' . $store->image) }}" alt="store"
+                    <img src="{{ asset('images/brands/' . $store->image) }} " alt="store"
                         class="mx-auto h-16 object-contain">
 
                 </div>

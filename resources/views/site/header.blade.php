@@ -54,7 +54,7 @@
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">How it Works</a>
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Promo Codes</a>
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Categories</a>
-                <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Resources</a>
+                <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Stores</a>
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Blogs</a>
             </div>
 

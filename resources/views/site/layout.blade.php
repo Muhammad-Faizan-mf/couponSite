@@ -40,7 +40,7 @@
       <li><a href="#" class="hover:text-green-400">How it Works</a></li>
       <li><a href="/store" class="hover:text-green-400">Promo Codes</a></li>
       <li><a href="#" class="hover:text-green-400">Categories</a></li>
-      <li><a href="#" class="hover:text-green-400">Resources</a></li>
+      <li><a href="all-stores" class="hover:text-green-400">Store</a></li>
       <li><a href="#" class="hover:text-green-400">Blogs</a></li>
     </ul>
 
@@ -70,7 +70,7 @@
       <li><a href="#" class="hover:text-green-400 block">How it Works</a></li>
       <li><a href="#" class="hover:text-green-400 block">Promo Codes</a></li>
       <li><a href="#" class="hover:text-green-400 block">Categories</a></li>
-      <li><a href="#" class="hover:text-green-400 block">Resources</a></li>
+      <li><a href="/all-stores" class="hover:text-green-400 block">Store</a></li>
       <li><a href="#" class="hover:text-green-400 block">Blogs</a></li>
       <li><a href="#" class="border border-green-500 text-green-500 px-4 py-1 rounded-full text-sm block text-center">Login</a></li>
       <li><a href="#" class="bg-green-500 text-black px-4 py-1 rounded-full text-sm block text-center">Get Coupons</a></li>

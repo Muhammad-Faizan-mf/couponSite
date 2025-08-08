@@ -56,6 +56,9 @@ Route::get('/categories',[NavbarController::class,'categories']);
 Route::get('/store',[StoreController::class,'index']);
 Route::get('/store/{id}',[StoreController::class,'storeView']);
 
+Route::get('/all-stores',[StoreController::class,'allStores']);
+
+
 
 // Route::get('/deals', [DealController::class, 'index'])->name('deals.index');
 

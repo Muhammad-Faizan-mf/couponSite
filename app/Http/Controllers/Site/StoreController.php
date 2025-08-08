@@ -40,4 +40,10 @@ class   StoreController extends Controller
         // dd($store,$topBrands);
         return view('site.store',compact('store','topBrands','coupons'));
     }
+
+
+    public function allStores(){
+        $stores = Brand::all();
+        return view('site.allStore',compact('stores'));
+    }
 }
