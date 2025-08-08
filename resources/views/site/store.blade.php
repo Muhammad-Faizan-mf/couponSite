@@ -19,8 +19,9 @@
                 <div>
                     <h3 class="text-base font-semibold text-gray-800 mb-2">TODAY'S TOP {{ $store->name }} OFFERS:</h3>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
-                        <li>2% Cash Back for Purchases Sitewide</li>
-                        <li>Experience hassle-free journeys with Amazon, your reliable travel partner.</li>
+                        {{$store->detail}}
+                        {{-- <li>2% Cash Back for Purchases Sitewide</li>
+                        <li>Experience hassle-free journeys with Amazon, your reliable travel partner.</li> --}}
                     </ul>
                     <div class="mt-3 text-sm">
                         <p><strong>Total Offers:</strong> 6</p>
