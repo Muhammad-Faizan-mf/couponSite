@@ -122,61 +122,75 @@
   </script>
 
 
-
-<div class="container mx-auto px-4 py-6">
+<div class="container mx-auto px-4 py-6" x-data="{ selectedCategory: 'All Deals' }">
     <h2 class="text-2xl font-bold mb-4">Our Top Coupon Codes, Discounts and Deals</h2>
 
     {{-- Category Filter --}}
     <div class="flex flex-wrap gap-3 mb-6">
-        @foreach(['All Deals', 'Fashion', 'Electronics', 'Travel', 'Food'] as $filter)
-            <button class="px-4 py-2 rounded-full border @if($loop->first) bg-green-500 text-white @else bg-white text-black @endif hover:bg-green-500 hover:text-white transition">
-                {{ $filter }}
-            </button>
-        @endforeach
+        <button
+            class="px-4 py-2 rounded-full border"
+            :class="selectedCategory === 'All Deals' ? 'bg-green-500 text-white' : 'bg-white text-black hover:bg-green-500 hover:text-white transition'"
+            @click="selectedCategory = 'All Deals'">
+            All Deals
+        </button>
+
+      @foreach($categories->take(4) as $category)
+    <button
+        class="px-4 py-2 rounded-full border"
+        :class="selectedCategory === '{{ $category->name }}' ? 'bg-green-500 text-white' : 'bg-white text-black hover:bg-green-500 hover:text-white transition'"
+        @click="selectedCategory = '{{ $category->name }}'">
+        {{ $category->name }}
+    </button>
+@endforeach
+
+
         <a href="#" class="ml-auto text-green-600 font-semibold hover:underline">View All Deals</a>
     </div>
 
     {{-- Deals Grid --}}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        @php
-            $coupons = [
-                ['brand' => 'Apple', 'desc' => 'Mac Book', 'icon' => '🍎'],
-                ['brand' => 'Levi\'s', 'desc' => 'Clothing', 'icon' => '👖'],
-                ['brand' => 'Ebay', 'desc' => 'Kitchen Appliances', 'icon' => '🛒'],
-                ['brand' => 'Amazon', 'desc' => 'Electronics', 'icon' => '📦'],
-                ['brand' => 'Best Buy', 'desc' => 'Hardware', 'icon' => '🔧'],
-                ['brand' => 'Adidas', 'desc' => 'Sports Wear', 'icon' => '👟'],
-                ['brand' => 'Etsy', 'desc' => 'Art & Craft', 'icon' => '🎨'],
-                ['brand' => 'Costco', 'desc' => 'Wholesale', 'icon' => '🏬'],
-            ];
-        @endphp
-
         @foreach($coupons as $coupon)
-        <div class="bg-white shadow-lg rounded-xl p-5 border border-gray-200">
-            <div class="flex items-center gap-2 mb-2">
-                <a href="/store">
-                <span class="text-2xl">{{ $coupon['icon'] }}</span>
-                <h3 class="font-bold text-lg">{{ $coupon['brand'] }}</h3>
-                <span class="text-blue-500 text-sm">✔ Verified coupon</span>
-            </a>
-            </div>
-            <h4 class="text-md font-semibold mb-1">Get 50% OFF on {{ $coupon['desc'] }}</h4>
-            <p class="text-gray-600 text-sm mb-4">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <div class="flex items-center justify-between">
-                <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition">
-                    Copy Code
-                </button>
-                <div class="text-xs text-gray-500 flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 0a5 5 0 00-5 5v1H3a3 3 0 00-3 3v5a3 3 0 003 3h14a3 3 0 003-3v-5a3 3 0 00-3-3h-2V5a5 5 0 00-5-5zM5 5a5 5 0 0110 0v1H5V5z" /></svg>
-                    356 uses – Last used 19m ago
+            @php
+                // Safely pull the brand category name
+                $brandCategory = optional(optional($coupon->brand)->category)->name;
+            @endphp
+<div
+    class="bg-white shadow-lg rounded-xl p-5 border border-gray-200"
+    x-data='{ cat: @json($brandCategory) }'
+    x-show="selectedCategory === 'All Deals' || selectedCategory === cat"
+    x-transition
+>
+
+                <div class="flex items-center gap-2 mb-2">
+                    <a href="/store/{{ $coupon->brand_id }}">
+                        <span class="text-2xl">
+                            <img
+                src="{{ asset('images/brands/' . $coupon->brand->image ?? '🏷️' ) }}"
+                alt="{{ $coupon->brand->name ?? 'Brand Logo' }}"
+                class="h-10 object-contain max-w-full"
+              >
+                        </span>
+                        <h3 class="font-bold text-lg">{{ $coupon->brand?->name ?? 'No Brand' }}</h3>
+                        <span class="text-blue-500 text-sm">✔ Verified coupon</span>
+                    </a>
+                </div>
+
+                <h4 class="text-md font-semibold mb-1">{{ $coupon->name }}</h4>
+                <p class="text-gray-600 text-sm mb-4">{{ \Illuminate\Support\Str::limit($coupon->detail, 80) }}</p>
+
+                <div class="flex items-center justify-between">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition">
+                        Copy Code
+                    </button>
+                    {{-- <div class="text-xs text-gray-500 flex items-center gap-1">
+                        ✔ {{ $coupon->uses ?? 0 }} uses – Last used {{ $coupon->last_used ?? 'Recently' }}
+                    </div> --}}
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
 </div>
+
 
 
 <div class="container mx-auto px-4 py-6">
@@ -288,9 +302,9 @@
         <h2 class="text-lg font-medium text-gray-700 mb-4 md:mb-0">
             Everything you need to know about using <span class="text-black font-semibold">CaptainDiscounts</span>
         </h2>
-        <a href="#" class="inline-flex items-center px-5 py-2.5 bg-green-600 text-white font-semibold text-sm rounded-full hover:bg-green-700 transition">
+        {{-- <a href="#" class="inline-flex items-center px-5 py-2.5 bg-green-600 text-white font-semibold text-sm rounded-full hover:bg-green-700 transition">
             Start For Free Now <span class="ml-2">→</span>
-        </a>
+        </a> --}}
     </div>
 
     {{-- FAQ Grid --}}

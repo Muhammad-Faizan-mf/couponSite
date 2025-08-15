@@ -54,10 +54,22 @@ Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
 Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
 Route::get('/categories',[NavbarController::class,'categories']);
 Route::get('/store',[StoreController::class,'index']);
-Route::get('/store/{id}',[StoreController::class,'storeView']);
+Route::get('/store/{id}/{slug}', [StoreController::class, 'storeView']);
 
 Route::get('/all-stores',[StoreController::class,'allStores']);
 
+Route::get('/privacy-policy', function () {
+    return view('site.privacyPolicy');
+});
+Route::get('/terms-and-conditions', function () {
+    return view('site.termsAndConditions');
+});
+Route::get('/our-company', function () {
+    return view('site.ourCompany');
+});
+Route::get('/contact-us', function () {
+    return view('site.contactUs');
+});
 
 
 // Route::get('/deals', [DealController::class, 'index'])->name('deals.index');

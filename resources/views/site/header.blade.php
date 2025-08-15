@@ -51,7 +51,7 @@
         <!-- Navigation Links -->
         <div id="nav-content" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block">
             <div class="text-sm lg:flex-grow lg:space-x-8 text-center lg:text-left">
-                <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">How it Works</a>
+                {{-- <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">How it Works</a> --}}
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Promo Codes</a>
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Categories</a>
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">Stores</a>

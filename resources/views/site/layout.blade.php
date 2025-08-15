@@ -37,20 +37,20 @@
     </div>
 
     <ul class="hidden md:flex space-x-6 text-sm">
-      <li><a href="#" class="hover:text-green-400">How it Works</a></li>
-      <li><a href="/store" class="hover:text-green-400">Promo Codes</a></li>
+      {{-- <li><a href="#" class="hover:text-green-400">How it Works</a></li> --}}
+      <li><a href="#" class="hover:text-green-400">Promo Codes</a></li>
       <li><a href="#" class="hover:text-green-400">Categories</a></li>
       <li><a href="all-stores" class="hover:text-green-400">Store</a></li>
       <li><a href="#" class="hover:text-green-400">Blogs</a></li>
     </ul>
 
     <div class="hidden md:flex items-center space-x-4">
-      <button aria-label="Search" class="text-white">
+      {{-- <button aria-label="Search" class="text-white">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35a7.5 7.5 0 1116.65 16.65z" />
         </svg>
-      </button>
-      <a href="#" class="border border-green-500 text-green-500 px-4 py-1 rounded-full text-sm">Login</a>
+      </button> --}}
+      {{-- <a href="#" class="border border-green-500 text-green-500 px-4 py-1 rounded-full text-sm">Login</a> --}}
       <a href="#" class="bg-green-500 text-black px-4 py-1 rounded-full text-sm">Get Coupons</a>
     </div>
 
@@ -67,12 +67,12 @@
       x-cloak
       class="absolute top-full left-0 w-full bg-black text-white flex flex-col md:hidden px-4 py-4 space-y-4 z-20"
     >
-      <li><a href="#" class="hover:text-green-400 block">How it Works</a></li>
+      {{-- <li><a href="#" class="hover:text-green-400 block">How it Works</a></li> --}}
       <li><a href="#" class="hover:text-green-400 block">Promo Codes</a></li>
       <li><a href="#" class="hover:text-green-400 block">Categories</a></li>
       <li><a href="/all-stores" class="hover:text-green-400 block">Store</a></li>
       <li><a href="#" class="hover:text-green-400 block">Blogs</a></li>
-      <li><a href="#" class="border border-green-500 text-green-500 px-4 py-1 rounded-full text-sm block text-center">Login</a></li>
+      {{-- <li><a href="#" class="border border-green-500 text-green-500 px-4 py-1 rounded-full text-sm block text-center">Login</a></li> --}}
       <li><a href="#" class="bg-green-500 text-black px-4 py-1 rounded-full text-sm block text-center">Get Coupons</a></li>
     </ul>
   </nav>
@@ -101,8 +101,8 @@
                  <div>
                     <h4 class="font-semibold mb-3">Company</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/our-company">About Us</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
@@ -119,9 +119,9 @@
                 <div>
                     <h4 class="font-semibold mb-3">Legal</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+                        <li><a href="/our-company">Our Company</a></li>
                     </ul>
                 </div>
             </div>
@@ -136,8 +136,8 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-center gap-2">
             <p class="font-semibold">© 2025 Captain Discount. All rights reserved.</p>
             <div class="flex space-x-4">
-                <a href="#" class="hover:underline">Terms & Conditions</a>
-                <a href="#" class="hover:underline">Privacy Policy</a>
+                <a href="/terms-and-conditions" class="hover:underline">Terms & Conditions</a>
+                <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
                 <a href="#" class="hover:underline">Cookies</a>
             </div>
         </div>
