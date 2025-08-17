@@ -34,11 +34,16 @@ class   StoreController extends Controller
         ->orderBy('coupons_count', 'desc')
         ->take(11)
         ->get();
-        $coupons = Coupon::where('brand_id', $id)->get();
-        // dd($coupons);
+        $coupons = Coupon::where('brand_id', $id)
+    ->orderBy('priority', 'asc')
+    ->get();        // dd($coupons);
+$totalCoupons = Coupon::where('brand_id', $id)->count();
+$couponCodes = Coupon::where('brand_id', $id)->where('coupon_code', '!=',NULL)->count();
+
+
 
         // dd($store,$topBrands);
-        return view('site.store',compact('store','topBrands','coupons'));
+        return view('site.store',compact('store','topBrands','coupons','totalCoupons','couponCodes'));
     }
 
 

@@ -115,4 +115,12 @@ class BlogController extends Controller
         return redirect()->route('blogs.index')
                          ->with('success', 'Blog deleted successfully');
     }
+
+
+    public function blogDetail ($id){
+
+        $blog = Blog::where('id',$id)->first();
+        return view('site.blogDetail', compact('blog'));
+
+    }
 }

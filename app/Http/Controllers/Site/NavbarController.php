@@ -18,7 +18,7 @@ class NavbarController extends Controller
 
     public function promoCodes(){
 
-        $topCoupons = Coupon::get();
+        $topCoupons = Coupon::where('coupon_code','!=', NULL)->get();
 
         return view('site.promoCode',compact('topCoupons'));
     }

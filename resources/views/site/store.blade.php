@@ -24,10 +24,10 @@
                         <li>Experience hassle-free journeys with Amazon, your reliable travel partner.</li> --}}
                     </ul>
                     <div class="mt-3 text-sm">
-                        <p><strong>Total Offers:</strong> 6</p>
-                        <p><strong>Coupon Codes:</strong> 1</p>
-                        <p><strong>In-Store Coupons:</strong> 0</p>
-                        <p><strong>Free Shipping Deals:</strong> 0</p>
+                        <p><strong>Total Offers:</strong> {{$totalCoupons}}</p>
+                        <p><strong>Coupon Codes:</strong> {{$couponCodes}}</p>
+                        <p><strong>In-Store Coupons:</strong> {{$totalCoupons}}</p>
+                        {{-- <p><strong>Free Shipping Deals:</strong> 0</p> --}}
                     </div>
                 </div>
 
@@ -64,6 +64,10 @@
 
                 {{-- Coupon Cards Grid --}}
              <div x-data="{ open: false, couponUrl: '', couponName: '', couponDetail: '', couponCode: '' }">
+
+
+
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($coupons as $coupon)
             <div
@@ -87,7 +91,7 @@
                             class="h-8 w-8 object-contain">
                         <div>
                             <p class="text-sm font-semibold text-gray-800">{{ $store->name }}</p>
-                            <p class="text-xs text-green-600 font-medium">✔ Verified coupon</p>
+                            <p class="text-xs text-green-600 font-medium">✔ {{$coupon->state}}</p>
                         </div>
                 </div>
                 <h3 class="text-base font-semibold text-gray-800 mb-2">{{ $coupon->name }}</h3>
@@ -297,7 +301,7 @@
                     <!-- Brand Logos -->
                     @foreach ($topBrands as $topBrand)
                         <div class="shrink-0 w-28 flex justify-center items-center">
-                                            <a href="/store/{{$topBrand->id}}">
+                                            <a href="/store/{{$topBrand->id}}/{{Str::slug($topBrand->name)}}">
 
                             <img src="{{ asset('images/brands/' . $topBrand->image) }}"
                                 alt="{{ $topBrand->name ?? 'Brand Logo' }}" class="h-10 object-contain max-w-full">
@@ -310,7 +314,7 @@
                 <div class="hidden md:grid grid-cols-11 gap-6">
                     @foreach ($topBrands as $topBrand)
                         <div class="flex justify-center items-center">
-                                            <a href="/store/{{$topBrand->id}}">
+                                            <a href="/store/{{$topBrand->id}}/{{Str::slug($topBrand->name)}}">
 
                             <img src="{{ asset('images/brands/' . $topBrand->image) }}"
                                 alt="{{ $topBrand->name ?? 'Brand Logo' }}" class="h-10 object-contain max-w-full"></a>

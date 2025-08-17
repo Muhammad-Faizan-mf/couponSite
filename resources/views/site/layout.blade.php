@@ -38,10 +38,10 @@
 
     <ul class="hidden md:flex space-x-6 text-sm">
       {{-- <li><a href="#" class="hover:text-green-400">How it Works</a></li> --}}
-      <li><a href="#" class="hover:text-green-400">Promo Codes</a></li>
+      <li><a href="promo-codes" class="hover:text-green-400">Promo Codes</a></li>
       <li><a href="#" class="hover:text-green-400">Categories</a></li>
       <li><a href="all-stores" class="hover:text-green-400">Store</a></li>
-      <li><a href="#" class="hover:text-green-400">Blogs</a></li>
+      <li><a href="blog" class="hover:text-green-400">Blogs</a></li>
     </ul>
 
     <div class="hidden md:flex items-center space-x-4">
@@ -68,10 +68,10 @@
       class="absolute top-full left-0 w-full bg-black text-white flex flex-col md:hidden px-4 py-4 space-y-4 z-20"
     >
       {{-- <li><a href="#" class="hover:text-green-400 block">How it Works</a></li> --}}
-      <li><a href="#" class="hover:text-green-400 block">Promo Codes</a></li>
+      <li><a href="promo-codes" class="hover:text-green-400 block">Promo Codes</a></li>
       <li><a href="#" class="hover:text-green-400 block">Categories</a></li>
       <li><a href="/all-stores" class="hover:text-green-400 block">Store</a></li>
-      <li><a href="#" class="hover:text-green-400 block">Blogs</a></li>
+      <li><a href="blog" class="hover:text-green-400 block">Blogs</a></li>
       {{-- <li><a href="#" class="border border-green-500 text-green-500 px-4 py-1 rounded-full text-sm block text-center">Login</a></li> --}}
       <li><a href="#" class="bg-green-500 text-black px-4 py-1 rounded-full text-sm block text-center">Get Coupons</a></li>
     </ul>

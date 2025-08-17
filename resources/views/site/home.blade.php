@@ -2,6 +2,12 @@
 @extends('site.layout')
 
 @section('content')
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-white to-green-100 py-12 px-4 md:px-12">
@@ -14,9 +20,10 @@
                 <p class="text-gray-700 text-lg">
                     Get the latest verified deals from top brands to save instantly!
                 </p>
-                <a href="#" class="inline-block bg-green-500 text-black px-6 py-2 rounded-full text-sm font-medium mt-2">
-                    Browse Top Deals ↓
-                </a>
+               <a href="#top-deals"
+   class="inline-block bg-green-500 text-black px-6 py-2 rounded-full text-sm font-medium mt-2">
+   Browse Top Deals ↓
+</a>
             </div>
             <div class="md:w-1/2 mt-8 md:mt-0">
                 <!-- Replace this with your slider or image -->
@@ -61,7 +68,8 @@
           <!-- Brand Logos -->
           @foreach ($topBrands as $topBrand)
             <div class="shrink-0 w-28 flex justify-center items-center">
-                <a href="/store/{{$topBrand->id}}">
+                <a href="/store/{{$topBrand->id}}/{{ Str::slug($topBrand->name) }}">
+                    {{-- @dd($topBrand->name) --}}
               <img
                 src="{{ asset('images/brands/' . $topBrand->image) }}"
                 alt="{{ $topBrand->name ?? 'Brand Logo' }}"
@@ -77,7 +85,7 @@
           @foreach ($topBrands as $topBrand)
 
           <div class="flex justify-center items-center">
-            <a href="/store/{{$topBrand->id}}">
+            <a href="/store/{{$topBrand->id}}/{{ Str::slug($topBrand->name) }}">
               <img
                 src="{{ asset('images/brands/' . $topBrand->image) }}"
                 alt="{{ $topBrand->name ?? 'Brand Logo' }}"
@@ -122,8 +130,9 @@
   </script>
 
 
-<div class="container mx-auto px-4 py-6" x-data="{ selectedCategory: 'All Deals' }">
+<div id="top-deals" class="container mx-auto px-4 py-6" x-data="{ selectedCategory: 'All Deals' }">
     <h2 class="text-2xl font-bold mb-4">Our Top Coupon Codes, Discounts and Deals</h2>
+
 
     {{-- Category Filter --}}
     <div class="flex flex-wrap gap-3 mb-6">
@@ -171,7 +180,7 @@
               >
                         </span>
                         <h3 class="font-bold text-lg">{{ $coupon->brand?->name ?? 'No Brand' }}</h3>
-                        <span class="text-blue-500 text-sm">✔ Verified coupon</span>
+                        <span class="text-blue-500 text-sm">✔ {{$coupon->state}}</span>
                     </a>
                 </div>
 
@@ -182,9 +191,9 @@
                     <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition">
                         Copy Code
                     </button>
-                    {{-- <div class="text-xs text-gray-500 flex items-center gap-1">
+                    <div class="text-xs text-gray-500 flex items-center gap-1">
                         ✔ {{ $coupon->uses ?? 0 }} uses – Last used {{ $coupon->last_used ?? 'Recently' }}
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         @endforeach

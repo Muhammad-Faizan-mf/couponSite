@@ -55,6 +55,8 @@ Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
 Route::get('/categories',[NavbarController::class,'categories']);
 Route::get('/store',[StoreController::class,'index']);
 Route::get('/store/{id}/{slug}', [StoreController::class, 'storeView']);
+Route::get('/blog/{id}/{slug}', [BlogController::class, 'blogDetail']);
+
 
 Route::get('/all-stores',[StoreController::class,'allStores']);
 

@@ -18,12 +18,14 @@
                     <h3 class="text-xl font-semibold">{{$recentBlog->name}}</h3>
                     {{-- <p class="text-gray-600 text-sm">By: Isaac Armstrong</p> --}}
                     <p class="text-gray-500 mt-2">{{ \Illuminate\Support\Str::limit($recentBlog->detail, 40) }}</p>
+                    {{-- <p class="text-gray-500 mt-2">{{ \Illuminate\Support\Str::limit($recentBlog->detail, 500) }}</p> --}}
 
                     {{-- <p class="text-gray-500 mt-2">{{$recentBlog->detail}}</p> --}}
-                    <a href="#" class="text-blue-600 font-semibold mt-4 inline-block">CONTINUE READING →</a>
+                    <a href="/blog/{{$recentBlog->id}}/{{ Str::slug($recentBlog->name) }}" class="text-blue-600 font-semibold mt-4 inline-block">CONTINUE READING →</a>
                 </div>
             </div>
             @endforeach
+
 
             {{-- <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <img src="/path-to-blog2.jpg" alt="Blog 2" class="w-full h-52 object-cover">
