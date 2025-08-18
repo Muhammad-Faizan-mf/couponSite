@@ -17,12 +17,12 @@
                 </div>
 
                 <div>
-                    <h3 class="text-base font-semibold text-gray-800 mb-2">TODAY'S TOP {{ $store->name }} OFFERS:</h3>
+                    {{-- <h3 class="text-base font-semibold text-gray-800 mb-2">TODAY'S TOP {{ $store->name }} OFFERS:</h3>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                         {{$store->detail}}
-                        {{-- <li>2% Cash Back for Purchases Sitewide</li>
-                        <li>Experience hassle-free journeys with Amazon, your reliable travel partner.</li> --}}
-                    </ul>
+                        <li>2% Cash Back for Purchases Sitewide</li>
+                        <li>Experience hassle-free journeys with Amazon, your reliable travel partner.</li>
+                    </ul> --}}
                     <div class="mt-3 text-sm">
                         <p><strong>Total Offers:</strong> {{$totalCoupons}}</p>
                         <p><strong>Coupon Codes:</strong> {{$couponCodes}}</p>
@@ -34,19 +34,19 @@
                 <div>
                     <h4 class="text-base font-semibold text-gray-800">ABOUT THE STORE</h4>
                     <p class="text-sm text-gray-700 mt-2">{{ $store->detail }}</p>
-                    <a href="#" class="text-green-600 text-sm font-medium mt-2 inline-block">Learn How We Verify
-                        Coupons</a>
+                    {{-- <a href="#" class="text-green-600 text-sm font-medium mt-2 inline-block">Learn How We Verify
+                        Coupons</a> --}}
                 </div>
 
-                <div class="text-green-600 font-medium text-sm">
+                {{-- <div class="text-green-600 font-medium text-sm">
                     <a href="#" class="underline">SUBMIT A COUPON</a>
-                </div>
+                </div> --}}
 
                 <div>
                     <p class="text-sm font-semibold text-gray-800">ABOUT {{ $store->name }}</p>
                     <div class="flex items-center mt-1">
                         <span class="text-yellow-500 text-lg">★★★★★</span>
-                        <span class="ml-2 text-sm text-gray-600">Rate Amazon Offers</span>
+                        <span class="ml-2 text-sm text-gray-600">Rate {{$store->name}} Offers</span>
                     </div>
                 </div>
 

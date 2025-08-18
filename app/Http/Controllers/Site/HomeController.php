@@ -27,6 +27,7 @@ $coupons = Coupon::with('brand')->get();
 $coupons = Coupon::with(['brand.category'])->get();
 $categories = Category::all();
 
+
         return view('site.home',compact('topBrands','recentBlogs','topCoupons','categories','coupons'));
     }
 }

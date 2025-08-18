@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\Site\CategoryController as SiteCategoryController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\NavbarController;
 use App\Http\Controllers\Site\StoreController;
@@ -56,6 +57,10 @@ Route::get('/categories',[NavbarController::class,'categories']);
 Route::get('/store',[StoreController::class,'index']);
 Route::get('/store/{id}/{slug}', [StoreController::class, 'storeView']);
 Route::get('/blog/{id}/{slug}', [BlogController::class, 'blogDetail']);
+Route::get('/category/{id}/{slug}', [SiteCategoryController::class, 'byCategory']);
+Route::get('/all-categories', [SiteCategoryController::class, 'allCategory']);
+
+
 
 
 Route::get('/all-stores',[StoreController::class,'allStores']);

@@ -205,11 +205,11 @@
 <div class="container mx-auto px-4 py-6">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold">Trending Categories</h2>
-        <a href="#" class="text-green-600 font-semibold hover:underline">View All Category</a>
+        <a href="/all-categories" class="text-green-600 font-semibold hover:underline">View All Category</a>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
-        @php
+        {{-- @php
             $categories = [
                 ['name' => 'Fashion', 'icon' => '👕', 'stores' => 34, 'coupons' => 120],
                 ['name' => 'Tech', 'icon' => '💻', 'stores' => 28, 'coupons' => 95],
@@ -221,15 +221,18 @@
                 ['name' => 'Watches', 'icon' => '⌚', 'stores' => 22, 'coupons' => 78],
                 ['name' => 'Subscription', 'icon' => '📦', 'stores' => 18, 'coupons' => 45],
             ];
-        @endphp
+        @endphp --}}
         {{-- @dd($categories) --}}
         @for ($i = 0; $i < 6; $i++)
         @if (isset($categories[$i]))
+
+        <a href="/category/{{$categories[$i]['id'] }}/{{ Str::slug($topBrand->name) }}">
             <div class="bg-white rounded-xl shadow border text-center p-4 hover:shadow-md transition">
                 <div class="text-3xl text-green-500 mb-2">{{ $categories[$i]['icon'] }}</div>
                 <h3 class="font-semibold text-black text-lg">{{ $categories[$i]['name'] }}</h3>
-                <p class="text-sm text-gray-500 mt-1">{{ $categories[$i]['stores'] }} Stores | {{ $categories[$i]['coupons'] }} Coupons</p>
+                {{-- <p class="text-sm text-gray-500 mt-1">{{ $categories[$i]['stores'] }} Stores | {{ $categories[$i]['coupons'] }} Coupons</p> --}}
             </div>
+        </a>
         @endif
     @endfor
 
