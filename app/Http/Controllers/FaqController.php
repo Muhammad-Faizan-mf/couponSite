@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Faq;
 use Illuminate\Contracts\View\View;
@@ -24,7 +25,8 @@ class FaqController extends Controller
     public function create(): View
     {
         $category = Category::get();
-        return view('faq.create',compact('category'));
+        $brands= Brand::get();
+        return view('faq.create',compact('category','brands'));
     }
 
     /**
@@ -76,38 +78,31 @@ class FaqController extends Controller
     public function edit(Faq $faq): View
     {
         $category = Category::get();
+                $brands= Brand::get();
 
-        return view('faq.edit', compact('faq','category'));
+        return view('faq.edit', compact('faq','category','brands'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Faq $faq): RedirectResponse
-    {
-        $request->validate([
-            'question' => 'required',
-            'answer' => 'required',
-            // 'category_id' => 'required',
+    public function update(Request $request, Faq $faq)
+{
+    $request->validate([
+        'question' => 'required|string|max:255',
+        'answer' => 'required|string',
+        'brand_id' =>'required',
+    ]);
 
-        ]);
+    $faq->update([
+        'question' => $request->question,
+        'answer' => $request->answer,
+        'brand_id' =>$request->brand_id,
+    ]);
 
-        $input = $request->all();
+    return redirect()->route('faqs.index')->with('success', 'FAQ updated successfully.');
+}
 
-        // if ($image = $request->file('image')) {
-        //     $destinationPath = 'images/faqs';
-        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move($destinationPath, $profileImage);
-        //     $input['image'] = "$profileImage";
-        // }else{
-        //     unset($input['image']);
-        // }
-
-        $faq->update($input);
-
-        return redirect()->route('faqs.index')
-                         ->with('success', 'Faq updated successfully');
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -119,4 +114,25 @@ class FaqController extends Controller
         return redirect()->route('faqs.index')
                          ->with('success', 'Faq deleted successfully');
     }
+
+
+ public function upload(Request $request)
+{
+    if ($request->hasFile('upload')) {
+        $file     = $request->file('upload');
+        $filename = time().'_'.$file->getClientOriginalName();
+        $file->move(public_path('uploads/faqs'), $filename);
+
+        return response()->json([
+            "url" => asset('uploads/faqs/'.$filename)
+        ]);
+    }
+
+    return response()->json(['error' => 'No file uploaded'], 400);
+}
+
+
+
+
+
 }

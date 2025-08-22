@@ -60,6 +60,7 @@ Route::get('/blog/{id}/{slug}', [BlogController::class, 'blogDetail']);
 Route::get('/category/{id}/{slug}', [SiteCategoryController::class, 'byCategory']);
 Route::get('/all-categories', [SiteCategoryController::class, 'allCategory']);
 
+Route::post('/faqs/upload', [FaqController::class, 'upload'])->name('faqs.upload');
 
 
 

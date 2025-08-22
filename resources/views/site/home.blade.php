@@ -129,10 +129,10 @@
     });
   </script>
 
+<div id="top-deals" class="container mx-auto px-4 py-6"
+     x-data="{ selectedCategory: 'All Deals', open: false, couponName: '', couponDetail: '', couponCode: '', couponUrl: '' }">
 
-<div id="top-deals" class="container mx-auto px-4 py-6" x-data="{ selectedCategory: 'All Deals' }">
     <h2 class="text-2xl font-bold mb-4">Our Top Coupon Codes, Discounts and Deals</h2>
-
 
     {{-- Category Filter --}}
     <div class="flex flex-wrap gap-3 mb-6">
@@ -143,52 +143,60 @@
             All Deals
         </button>
 
-      @foreach($categories->take(4) as $category)
-    <button
-        class="px-4 py-2 rounded-full border"
-        :class="selectedCategory === '{{ $category->name }}' ? 'bg-green-500 text-white' : 'bg-white text-black hover:bg-green-500 hover:text-white transition'"
-        @click="selectedCategory = '{{ $category->name }}'">
-        {{ $category->name }}
-    </button>
-@endforeach
+        @foreach($categories->take(4) as $category)
+            <button
+                class="px-4 py-2 rounded-full border"
+                :class="selectedCategory === '{{ $category->name }}' ? 'bg-green-500 text-white' : 'bg-white text-black hover:bg-green-500 hover:text-white transition'"
+                @click="selectedCategory = '{{ $category->name }}'">
+                {{ $category->name }}
+            </button>
+        @endforeach
 
-
-        <a href="#" class="ml-auto text-green-600 font-semibold hover:underline">View All Deals</a>
+        <a href="/all-stores" class="ml-auto text-green-600 font-semibold hover:underline">View All Deals</a>
     </div>
 
     {{-- Deals Grid --}}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($coupons as $coupon)
             @php
-                // Safely pull the brand category name
                 $brandCategory = optional(optional($coupon->brand)->category)->name;
             @endphp
-<div
-    class="bg-white shadow-lg rounded-xl p-5 border border-gray-200"
-    x-data='{ cat: @json($brandCategory) }'
-    x-show="selectedCategory === 'All Deals' || selectedCategory === cat"
-    x-transition
->
 
+            <div
+                class="bg-white shadow-lg rounded-xl p-5 border border-gray-200 cursor-pointer hover:shadow-xl transition"
+                x-data='{ cat: @json($brandCategory) }'
+                x-show="selectedCategory === 'All Deals' || selectedCategory === cat"
+                x-transition
+                @click="
+                    couponName = '{{ $coupon->name }}';
+                    couponDetail = '{{ $coupon->detail }}';
+                    couponCode = '{{ $coupon->coupon_code }}';
+                    couponUrl = '{{ $coupon->url }}';
+                            window.open('{{ $coupon->url }}', '_blank');
+
+                    open = true;
+                    navigator.clipboard.writeText(couponCode);
+                "
+            >
                 <div class="flex items-center gap-2 mb-2">
-                    <a href="/store/{{ $coupon->brand_id }}">
                         <span class="text-2xl">
                             <img
-                src="{{ asset('images/brands/' . $coupon->brand->image ?? '🏷️' ) }}"
-                alt="{{ $coupon->brand->name ?? 'Brand Logo' }}"
-                class="h-10 object-contain max-w-full"
-              >
+                                src="{{ asset('images/brands/' . ($coupon->brand->image ?? 'default.png')) }}"
+                                alt="{{ $coupon->brand->name ?? 'Brand Logo' }}"
+                                class="h-10 object-contain max-w-full"
+                            >
                         </span>
                         <h3 class="font-bold text-lg">{{ $coupon->brand?->name ?? 'No Brand' }}</h3>
-                        <span class="text-blue-500 text-sm">✔ {{$coupon->state}}</span>
-                    </a>
+
+                        <span class="text-blue-500 text-sm">✔ {{ $coupon->state }}</span>
                 </div>
 
                 <h4 class="text-md font-semibold mb-1">{{ $coupon->name }}</h4>
                 <p class="text-gray-600 text-sm mb-4">{{ \Illuminate\Support\Str::limit($coupon->detail, 80) }}</p>
 
                 <div class="flex items-center justify-between">
-                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition">
+                    <button
+                        class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition">
                         Copy Code
                     </button>
                     <div class="text-xs text-gray-500 flex items-center gap-1">
@@ -198,46 +206,57 @@
             </div>
         @endforeach
     </div>
+
+    {{-- Coupon Modal --}}
+    <div
+        x-show="open"
+        x-cloak
+        x-transition.opacity.duration.300ms
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4"
+        @click.self="open = false"
+    >
+        <div
+            x-transition.scale.duration.300ms
+            class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6 relative border-t-4 border-green-600"
+        >
+            <!-- Close button -->
+            <button
+                @click="open = false"
+                class="absolute top-3 right-3 text-gray-500 hover:text-green-600 text-2xl leading-none"
+            >
+                &times;
+            </button>
+
+            <!-- Modal content -->
+            <h2 class="text-2xl font-bold text-gray-900 mb-1" x-text="couponName"></h2>
+            <p class="text-sm text-gray-600 mb-4" x-text="couponDetail"></p>
+
+            <template x-if="couponCode">
+                <div class="bg-green-50 border border-green-200 p-4 rounded-md text-center font-mono text-lg tracking-wide mb-4 flex items-center justify-between">
+                    <span class="text-green-600 font-bold" x-text="couponCode"></span>
+                    <button
+                        @click="
+                            navigator.clipboard.writeText(couponCode);
+                            $event.target.innerText = 'Copied!';
+                            setTimeout(() => $event.target.innerText = 'Copy', 1500);
+                        "
+                        class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded text-sm font-medium text-white"
+                    >
+                        Copy
+                    </button>
+                </div>
+            </template>
+
+            <template x-if="couponUrl">
+                {{-- <a :href="couponUrl" target="_blank" rel="noopener noreferrer"
+                   class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition text-center block font-medium">
+                    Open Link
+                </a> --}}
+            </template>
+        </div>
+    </div>
 </div>
 
-
-
-<div class="container mx-auto px-4 py-6">
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold">Trending Categories</h2>
-        <a href="/all-categories" class="text-green-600 font-semibold hover:underline">View All Category</a>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
-        {{-- @php
-            $categories = [
-                ['name' => 'Fashion', 'icon' => '👕', 'stores' => 34, 'coupons' => 120],
-                ['name' => 'Tech', 'icon' => '💻', 'stores' => 28, 'coupons' => 95],
-                ['name' => 'Travel', 'icon' => '✈️', 'stores' => 22, 'coupons' => 78],
-                ['name' => 'Health', 'icon' => '🛡️', 'stores' => 22, 'coupons' => 78],
-                ['name' => 'Sports', 'icon' => '🏃‍♂️', 'stores' => 22, 'coupons' => 78],
-                ['name' => 'Furniture', 'icon' => '💡', 'stores' => 22, 'coupons' => 78],
-                ['name' => 'Food', 'icon' => '🍽️', 'stores' => 22, 'coupons' => 78],
-                ['name' => 'Watches', 'icon' => '⌚', 'stores' => 22, 'coupons' => 78],
-                ['name' => 'Subscription', 'icon' => '📦', 'stores' => 18, 'coupons' => 45],
-            ];
-        @endphp --}}
-        {{-- @dd($categories) --}}
-        @for ($i = 0; $i < 6; $i++)
-        @if (isset($categories[$i]))
-
-        <a href="/category/{{$categories[$i]['id'] }}/{{ Str::slug($topBrand->name) }}">
-            <div class="bg-white rounded-xl shadow border text-center p-4 hover:shadow-md transition">
-                <div class="text-3xl text-green-500 mb-2">{{ $categories[$i]['icon'] }}</div>
-                <h3 class="font-semibold text-black text-lg">{{ $categories[$i]['name'] }}</h3>
-                {{-- <p class="text-sm text-gray-500 mt-1">{{ $categories[$i]['stores'] }} Stores | {{ $categories[$i]['coupons'] }} Coupons</p> --}}
-            </div>
-        </a>
-        @endif
-    @endfor
-
-    </div>
-</div>
 
 
 <div class="container mx-auto px-4 py-8 space-y-6">

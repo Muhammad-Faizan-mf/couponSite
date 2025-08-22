@@ -38,15 +38,15 @@
                         Coupons</a> --}}
                 </div>
 
-                {{-- <div class="text-green-600 font-medium text-sm">
+                <div class="text-green-600 font-medium text-sm">
                     <a href="#" class="underline">SUBMIT A COUPON</a>
-                </div> --}}
+                </div>
 
                 <div>
                     <p class="text-sm font-semibold text-gray-800">ABOUT {{ $store->name }}</p>
                     <div class="flex items-center mt-1">
                         <span class="text-yellow-500 text-lg">★★★★★</span>
-                        <span class="ml-2 text-sm text-gray-600">Rate {{$store->name}} Offers</span>
+                        <span class="ml-2 text-sm text-gray-600">Rate Amazon Offers</span>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
             <main class="lg:w-3/4 w-full">
                 <div class="mb-6">
                     <h1 class="text-2xl font-bold text-gray-900">{{ $store->name }} Coupons & Promo Codes</h1>
-                    <p class="text-sm text-gray-500 mt-1">Latest Discount for April 2025</p>
+                    <p class="text-sm text-gray-500 mt-1">Latest Discount for {{ \Carbon\Carbon::now()->format('F Y') }}</p>
                 </div>
 
                 {{-- Coupon Cards Grid --}}
@@ -71,21 +71,17 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($coupons as $coupon)
             <div
-                class="border border-gray-200 rounded-lg shadow-sm p-5 bg-white hover:shadow-lg transition cursor-pointer"
-                @click="
-                    couponName = '{{ $coupon->name }}';
-                    couponDetail = '{{ $coupon->detail }}';
-                    @if(!empty($coupon->url))
-                        couponUrl = '{{ $coupon->url }}';
-                        couponCode = '';
-                        window.open('{{ $coupon->url }}', '_blank');
-                    @else
-                        couponUrl = '';
-                        couponCode = '{{ $coupon->coupon_code }}';
-                    @endif
-                    open = true;
-                "
-            >
+    class="border border-gray-200 rounded-lg shadow-sm p-5 bg-white hover:shadow-lg transition cursor-pointer"
+    @click="
+        couponName = '{{ $coupon->name }}';
+        couponDetail = '{{ $coupon->detail }}';
+        couponCode = '{{ $coupon->coupon_code }}';
+        window.open('{{ $coupon->url }}', '_blank');
+        navigator.clipboard.writeText(couponCode);
+        open = true;
+
+    "
+>
                 <div class="flex items-center space-x-3 mb-3">
                         <img src="{{ asset('images/brands/'.$store->image) }}" alt="{{ $store->name }}"
                             class="h-8 w-8 object-contain">
@@ -324,6 +320,11 @@
             </div>
         </div>
     </section>
+
+
+    {{-- <h2>{{ $faq->question }}</h2>
+<div>{!! $faq->answer !!}</div> --}}
+
 
     {{-- <section class="py-8 px-4">
         <div class="flex justify-between items-center mb-6">

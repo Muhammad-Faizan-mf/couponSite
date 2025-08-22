@@ -8,5 +8,5 @@ class Faq extends Model
 {
     //
 
-    protected $fillable = ['question','answer'];
+    protected $fillable = ['question','answer','brand_id'];
 }

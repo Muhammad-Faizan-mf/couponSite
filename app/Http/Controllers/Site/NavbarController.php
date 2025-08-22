@@ -18,9 +18,12 @@ class NavbarController extends Controller
 
     public function promoCodes(){
 
-        $topCoupons = Coupon::where('coupon_code','!=', NULL)->get();
+ $coupons = Coupon::with('brand')
+    ->whereNotNull('coupon_code')
+    ->orderBy('priority', 'asc')
+    ->get();
 
-        return view('site.promoCode',compact('topCoupons'));
+        return view('site.promoCode',compact('coupons'));
     }
     public function categories(){
         $categories = Category::with('brands')->get();

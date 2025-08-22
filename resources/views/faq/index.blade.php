@@ -30,7 +30,9 @@
                 <tr>
                     <td>{{ ++$i }}</td>
                     {{-- <td><img src="/images/faqs/{{ $faq->image }}" width="100px"></td> --}}
-                    <td>{{ $faq->question }}</td>
+                    {{-- <td>{{ $faq->question }}</td> --}}
+                    <td></td>
+
                     {{-- <td>{{ $faq->category->name?? "No Category" }}</td> --}}
 
                     <td>{{ $faq->answer }}</td>

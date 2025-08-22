@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class   StoreController extends Controller
@@ -39,11 +40,12 @@ class   StoreController extends Controller
     ->get();        // dd($coupons);
 $totalCoupons = Coupon::where('brand_id', $id)->count();
 $couponCodes = Coupon::where('brand_id', $id)->where('coupon_code', '!=',NULL)->count();
+        $faq = Faq::where('id',17)->first();
 
 
 
         // dd($store,$topBrands);
-        return view('site.store',compact('store','topBrands','coupons','totalCoupons','couponCodes'));
+        return view('site.store',compact('store','topBrands','coupons','totalCoupons','couponCodes','faq'));
     }
 
 
