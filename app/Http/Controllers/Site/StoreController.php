@@ -40,7 +40,7 @@ class   StoreController extends Controller
     ->get();        // dd($coupons);
 $totalCoupons = Coupon::where('brand_id', $id)->count();
 $couponCodes = Coupon::where('brand_id', $id)->where('coupon_code', '!=',NULL)->count();
-        $faq = Faq::where('id',17)->first();
+        $faq = Faq::where('id',$id)->first();
 
 
 

@@ -212,7 +212,12 @@
         <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4">
             Store Frequently Ask Questions
         </h2>
-        <p class="text-gray-700 text-sm sm:text-base mb-6 leading-relaxed">
+        <div>
+         {!! $faq->answer ?? '' !!}
+
+
+        </div>
+        {{-- <p class="text-gray-700 text-sm sm:text-base mb-6 leading-relaxed">
             At Captain Discounts, we're committed to helping you save smartly. Our team tirelessly researches and verifies
             the latest coupon codes and deals from the most popular online stores, so you don’t have to waste time hunting
             for savings that don’t work. Transparency, accuracy, and real value are at the core of everything we do. We
@@ -268,7 +273,7 @@
                     newsletter to get the best deals delivered to your inbox.
                 </p>
             </div>
-        </div>
+        </div>--}}
     </section>
     <section class="py-12 px-4 md:px-12">
         <div class="max-w-7xl mx-auto">
