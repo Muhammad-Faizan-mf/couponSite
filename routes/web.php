@@ -102,7 +102,9 @@ use Illuminate\Support\Facades\Artisan;
 // });
 
 
-
+Route::get('/', function () {
+    return view('wip');
+});
 
 
 
