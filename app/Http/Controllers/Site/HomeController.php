@@ -25,6 +25,10 @@ $coupons = Coupon::with('brand')->get();
 
 
 $coupons = Coupon::with(['brand.category'])->get();
+// $coupons = Coupon::with('brand.category')
+//     ->orderBy('priority', 'asc')
+//     ->paginate(5); // instead of ->get()
+
 $categories = Category::all();
 
 

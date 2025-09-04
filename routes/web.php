@@ -51,6 +51,9 @@ Route::resource('faqs', FaqController::class)->middleware('auth');
 
 // For site routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('wip');
+});
 Route::get('/blog', [NavbarController::class, 'index'])->name('blogs');
 Route::get('/promo-codes',[NavbarController::class,'promoCodes']);
 Route::get('/categories',[NavbarController::class,'categories']);

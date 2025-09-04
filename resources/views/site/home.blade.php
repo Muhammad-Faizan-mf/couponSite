@@ -152,6 +152,7 @@
             </button>
         @endforeach
 
+
         <a href="/all-stores" class="ml-auto text-green-600 font-semibold hover:underline">View All Deals</a>
     </div>
 
@@ -206,6 +207,10 @@
             </div>
         @endforeach
     </div>
+    <!-- Pagination Links -->
+{{-- <div class="mt-6">
+    {{ $coupons->appends(request()->query())->fragment('top-deals')->links('pagination::tailwind') }}
+</div> --}}
 
     {{-- Coupon Modal --}}
     <div
